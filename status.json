@@ -1,5 +1,6 @@
 {
-  "bloqueo": false,
-  "mensaje": "",
-  "actualizado": "2026-09-06T17:35:56Z"
+  "bloqueo": true,
+  "mensaje": "Bloqueo de operadoras en curso (fútbol). Zokko funciona con normalidad; prueba con datos móviles o espera a que acabe el partido.",
+  "actualizado": "2026-09-06T17:37:32Z",
+  "afectadas": "zokko.es cerogluten.es"
 }
