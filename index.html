@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Estado de Zokko</title>
+  <meta name="description" content="Estado del servicio de zokko.es y aviso de bloqueos de operadoras durante los partidos de fútbol.">
+  <meta name="theme-color" content="#00a693">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a693'/%3E%3Ctext x='32' y='42' font-size='34' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+  <style>
+    :root { --teal:#00a693; --teal-d:#008f7e; --teal-soft:#e6f7f4; --ink:#0a1722; --muted:#5b6672; --line:#e6ebe9; --bg:#f5f7f8; --amber:#b45309; --amber-soft:#fff4e5; --ok:#15803d; --ok-soft:#ecfdf3; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); color: var(--ink); padding: 20px; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 640px; margin: 4vh auto 40px; }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .brand .z { width: 44px; height: 44px; border-radius: 12px; background: var(--teal); color: #fff; font-weight: 800; font-size: 24px; display: flex; align-items: center; justify-content: center; }
+    .brand b { font-size: 20px; color: var(--teal); }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; box-shadow: 0 10px 40px rgba(10,23,34,.06); margin-bottom: 16px; }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--teal-soft); color: var(--teal-d); }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .status.ok { background: var(--ok-soft); color: var(--ok); }
+    .status.amber { background: var(--amber-soft); color: var(--amber); }
+    .status.amber .dot { animation: pulse 1.4s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+    h1 { font-size: 26px; line-height: 1.2; letter-spacing: -.4px; margin: 14px 0 8px; }
+    h2 { font-size: 18px; margin: 0 0 8px; }
+    p { color: var(--muted); font-size: 16px; line-height: 1.55; margin: 0 0 12px; }
+    p b { color: var(--ink); font-weight: 600; }
+    .tips { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+    .tips li { display: flex; gap: 12px; align-items: flex-start; background: var(--bg); border-radius: 14px; padding: 12px 14px; font-size: 15px; line-height: 1.45; }
+    .tips .ic { flex: 0 0 34px; height: 34px; border-radius: 10px; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .tips small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .meta { font-size: 13px; color: var(--muted); margin-top: 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: #fff; font-weight: 600; font-size: 15px; padding: 12px 20px; border-radius: 14px; text-decoration: none; margin-top: 8px; }
+    footer { text-align: center; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--teal-d); text-decoration: none; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b1218; --ink:#eef2f4; --muted:#9aa6b1; --line:#1f2a33; --teal-soft:#0f2b27; }
+      .card { background: #111a22; } .tips .ic { background: #0b1218; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><div class="z">Z</div><b>Zokko</b></div>
+
+    <section class="card">
+      <span id="chip" class="status"><span class="dot"></span> Comprobando…</span>
+      <h1 id="title">Estado del servicio</h1>
+      <p id="msg">Un momento, estamos consultando el estado de zokko.es.</p>
+      <div class="meta" id="updated"></div>
+      <a class="btn" href="https://zokko.es/">Ir a zokko.es</a>
+    </section>
+
+    <section class="card">
+      <h2>¿Por qué a veces no carga Zokko en tarde de fútbol?</h2>
+      <p>Durante los partidos, algunas operadoras españolas (Digi, Movistar, Vodafone…) bloquean por orden de LaLiga direcciones de internet que comparten miles de webs legítimas. Zokko no tiene nada que ver con el fútbol, pero comparte esa dirección. Suele verse como un aviso de "conexión no privada" o "certificado no válido" en el navegador. <b>La web y tus datos están perfectamente.</b></p>
+      <ul class="tips">
+        <li><span class="ic">📶</span><div><b>Prueba con datos móviles</b><small>Desactiva el wifi. Cada operadora bloquea distinto y suele entrar por ahí.</small></div></li>
+        <li><span class="ic">⏱️</span><div><b>O espera a que termine el partido</b><small>El bloqueo se levanta solo, normalmente en una o dos horas.</small></div></li>
+        <li><span class="ic">🛡️</span><div><b>O usa la app gratuita 1.1.1.1</b><small>De Cloudflare, para iPhone, Android y ordenador. Con ella Zokko carga al instante.</small></div></li>
+      </ul>
+    </section>
+
+    <footer>Esta página vive fuera de la red bloqueada para que puedas leerla siempre · <a href="mailto:hola@zokko.es">hola@zokko.es</a></footer>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+    var $ = function (id) { return document.getElementById(id); };
+    function set(chipClass, chipText, title, msg) {
+      var c = $('chip'); c.className = 'status ' + chipClass; c.innerHTML = '<span class="dot"></span> ' + chipText;
+      $('title').textContent = title; $('msg').textContent = msg;
+    }
+    function fmt(iso) { try { var d = new Date(iso); return d.toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }); } catch (e) { return iso; } }
+    function apply(st) {
+      if (st && st.bloqueo) {
+        set('amber', 'Bloqueo de operadoras en curso', 'Hay bloqueos de operadoras ahora mismo', st.mensaje || 'Zokko funciona con normalidad, pero algunas operadoras están cortando el acceso por el fútbol. Prueba con datos móviles o espera a que termine el partido.');
+      } else {
+        set('ok', 'Todo funciona', 'Zokko funciona con normalidad', st && st.mensaje ? st.mensaje : 'No tenemos constancia de bloqueos ni incidencias en este momento. Si aun así no te carga, prueba con datos móviles.');
+      }
+      if (st && st.actualizado) $('updated').textContent = 'Actualizado: ' + fmt(st.actualizado);
+    }
+    fetch('status.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(apply)
+      .catch(function () { apply(null); });
+    // Comprobación directa desde tu conexión: si zokko.es responde, lo decimos.
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    setTimeout(function () { if (ctrl) ctrl.abort(); }, 7000);
+    fetch('https://zokko.es/api/health?t=' + Date.now(), { mode: 'no-cors', cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
+      .then(function () { var u = $('updated'); u.textContent = (u.textContent ? u.textContent + ' · ' : '') + 'Desde tu conexión zokko.es responde ahora mismo.'; })
+      .catch(function () { var u = $('updated'); u.textContent = (u.textContent ? u.textContent + ' · ' : '') + 'Desde tu conexión zokko.es NO responde ahora mismo.'; });
+  })();
+  </script>
+</body>
+</html>
