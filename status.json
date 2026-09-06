@@ -1,6 +1,13 @@
 {
-  "bloqueo": true,
-  "mensaje": "Bloqueo de operadoras en curso (fútbol). Zokko funciona con normalidad; prueba con datos móviles o espera a que acabe el partido.",
-  "actualizado": "2026-09-06T17:37:32Z",
-  "afectadas": "zokko.es cerogluten.es"
+  "bloqueo": false,
+  "mensaje": "",
+  "actualizado": "2026-09-06T17:54:20Z",
+  "fuente": "hayahora.futbol 2026-09-06 17:54:03Z",
+  "afectadas": "",
+  "operadoras": [],
+  "detalle": {
+    "zokko.es": [],
+    "cerogluten.es": [],
+    "romanceweddings.co.uk": []
+  }
 }
