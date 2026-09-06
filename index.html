@@ -49,6 +49,7 @@
       <span id="chip" class="status"><span class="dot"></span> Comprobando…</span>
       <h1 id="title">Estado del servicio</h1>
       <p id="msg">Un momento, estamos consultando el estado de zokko.es.</p>
+      <div id="isps" class="tips" style="margin-top:12px"></div>
       <div class="meta" id="updated"></div>
       <a class="btn" href="https://zokko.es/">Ir a zokko.es</a>
     </section>
@@ -81,7 +82,14 @@
       } else {
         set('ok', 'Todo funciona', 'Zokko funciona con normalidad', st && st.mensaje ? st.mensaje : 'No tenemos constancia de bloqueos ni incidencias en este momento. Si aun así no te carga, prueba con datos móviles.');
       }
-      if (st && st.actualizado) $('updated').textContent = 'Actualizado: ' + fmt(st.actualizado);
+      if (st && st.actualizado) $('updated').textContent = 'Actualizado: ' + fmt(st.actualizado) + (st.fuente ? ' · datos de hayahora.futbol' : '');
+      var all = ['DIGI', 'Movistar', 'Vodafone', 'Orange', 'Masmovil'], bl = (st && st.operadoras) || [];
+      var box = $('isps'); box.innerHTML = '';
+      all.forEach(function (o) {
+        var li = document.createElement('li'); var on = bl.indexOf(o) !== -1;
+        li.innerHTML = '<span class="ic">' + (on ? '⛔' : '✅') + '</span><div><b>' + o + (o === 'Masmovil' ? ' / Yoigo / Pepephone' : (o === 'DIGI' ? '' : '')) + '</b><small>' + (on ? 'Bloqueando zokko.es ahora mismo' : 'Sin bloqueo') + '</small></div>';
+        box.appendChild(li);
+      });
     }
     fetch('status.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { return r.json(); })
