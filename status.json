@@ -1,13 +1,19 @@
 {
-  "bloqueo": false,
-  "mensaje": "",
-  "actualizado": "2026-09-06T19:57:02Z",
-  "fuente": "hayahora.futbol 2026-09-06 19:56:33Z",
-  "afectadas": "",
-  "operadoras": [],
+  "bloqueo": true,
+  "mensaje": "Bloqueo de operadoras en curso (fútbol): Vodafone. Zokko funciona con normalidad; prueba con datos móviles o espera a que acabe el partido.",
+  "actualizado": "2026-09-12T16:15:03Z",
+  "fuente": "hayahora.futbol 2026-09-12 16:14:36Z",
+  "afectadas": "zokko.es cerogluten.es",
+  "operadoras": [
+    "Vodafone"
+  ],
   "detalle": {
-    "zokko.es": [],
-    "cerogluten.es": [],
+    "zokko.es": [
+      "Vodafone"
+    ],
+    "cerogluten.es": [
+      "Vodafone"
+    ],
     "romanceweddings.co.uk": []
   }
 }
