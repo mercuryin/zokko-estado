@@ -1,26 +1,23 @@
 {
   "bloqueo": true,
-  "mensaje": "Bloqueo de operadoras en curso (fútbol): DIGI, Movistar, Orange, Vodafone. Zokko funciona con normalidad; prueba con datos móviles o espera a que acabe el partido.",
-  "actualizado": "2026-09-19T21:15:05Z",
-  "fuente": "hayahora.futbol 2026-09-19 21:14:27Z",
+  "mensaje": "Bloqueo de operadoras en curso (fútbol): DIGI, Movistar, Vodafone. Zokko funciona con normalidad; prueba con datos móviles o espera a que acabe el partido.",
+  "actualizado": "2026-09-19T21:18:02Z",
+  "fuente": "hayahora.futbol 2026-09-19 21:17:37Z",
   "afectadas": "zokko.es cerogluten.es",
   "operadoras": [
     "DIGI",
     "Movistar",
-    "Orange",
     "Vodafone"
   ],
   "detalle": {
     "zokko.es": [
       "DIGI",
       "Movistar",
-      "Orange",
       "Vodafone"
     ],
     "cerogluten.es": [
       "DIGI",
       "Movistar",
-      "Orange",
       "Vodafone"
     ],
     "romanceweddings.co.uk": []
